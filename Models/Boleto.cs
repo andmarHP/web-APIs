@@ -7,8 +7,11 @@ namespace webAPI.Models
 {
     public class Boleto
     {
-        public int IdBoleto { get; set; }
+        public Boleto()
+        {
+            folio = Guid.NewGuid().ToString().Replace("-",".");
+        }
+        public string ?folio { get; set; }
         public string Name { get; set; }
-        public string Base64 { get; set; }
     }
 }
