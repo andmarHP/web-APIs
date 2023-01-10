@@ -1,3 +1,4 @@
+using System.Xml;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using webAPI.Models;
@@ -10,15 +11,21 @@ namespace webAPI.Controllers;
 public class HelloWorldController : ControllerBase
 {
     IHelloWorldService helloWorldServices;
+    //logger 
+    private readonly ILogger<HelloWorldController> _logger;
 
-    public HelloWorldController(IHelloWorldService helloWorld)
+    public HelloWorldController(IHelloWorldService helloWorld,
+                                ILogger<HelloWorldController> logger 
+                                )
     {
         helloWorldServices = helloWorld;
+        _logger = logger;
     }
     //uso de interfaz inyectada por dependencia
     [HttpGet("getHello")]
     public IActionResult Get()
     {
+        _logger.LogInformation("Este es un mensaje de hola en un log");
         return Ok(helloWorldServices.GetHelloWorld()); //usar metodo del servicio helloworld service
     }
 

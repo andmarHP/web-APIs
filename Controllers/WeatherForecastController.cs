@@ -53,5 +53,11 @@ public class WeatherForecastController : ControllerBase
         ListWeatherForecasts.RemoveAt(index);
         return Ok();
     }
+    [HttpGet("logger")]
+    public IEnumerable<WeatherForecast> Log()
+    {
+        _logger.LogDebug("Retornando la lista de WeatherForecast");
+        return ListWeatherForecasts;
+    }
 
 }
