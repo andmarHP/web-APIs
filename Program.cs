@@ -1,4 +1,5 @@
 using webAPI.Middlewares;
+using webAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//inyección de dependencias de servicio de HelloWorldService
+builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
 
 var app = builder.Build();
 
