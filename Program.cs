@@ -20,6 +20,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+//middleware para mostrar la pagina de bienvenida cada que se consuma la API
+app.UseWelcomePage();
+
 app.MapControllers();
 
 app.Run();
