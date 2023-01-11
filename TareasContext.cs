@@ -41,7 +41,7 @@ public class TareasContext: DbContext
             tarea.ToTable("Tarea");
             tarea.HasKey(p=> p.TareaId);
 
-            tarea.HasOne(p=> p.Categoria).WithMany(p=> p.Tareas).HasForeignKey(p=> p.CategoriaId);
+            tarea.HasOne(p=> p.Categoria).WithMany(p=> p.Tareas).HasForeignKey(p=> p.CategoriaId);//relacion entre tabla
 
             tarea.Property(p=> p.Titulo).IsRequired().HasMaxLength(200);
 
