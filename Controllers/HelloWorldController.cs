@@ -25,7 +25,7 @@ public class HelloWorldController : ControllerBase
     [HttpGet("getHello")]
     public IActionResult Get()
     {
-        _logger.LogInformation("Este es un mensaje de hola en un log");
+        _logger.LogDebug("Este es un mensaje de hola en un log tipo debug");
         return Ok(helloWorldServices.GetHelloWorld()); //usar metodo del servicio helloworld service
     }
 

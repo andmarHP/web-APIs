@@ -18,7 +18,7 @@ builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldServices());
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. //configure Swagger in develop - not in production
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -31,9 +31,9 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    [Route("get/climas")]
-    [Route("get/climaz")]
-    [Route("[action]")]  // con el nombre del metodo podemos acceder a la función del endpoint 
+    // [Route("get/climas")]
+    // [Route("get/climaz")]
+    // [Route("[action]")]  // con el nombre del metodo podemos acceder a la función del endpoint 
     public IEnumerable<WeatherForecast> Get()
     {
         return ListWeatherForecasts;
