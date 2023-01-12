@@ -1,4 +1,4 @@
-using webAPI.Middlewares;
+// using webAPI.Middlewares;
 using webAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,12 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //inyección de dependencias de servicio de HelloWorldService - primer forma de inyeccion de dependencia
-// builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
+builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
 
 //inyección de dependencias de servicio de HelloWorldService - segunda forma de inyeccion de dependencia (lambda)
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldServices());
-// builder.Services.AddScoped<ICategoriaService,CategoriaService>();
-// builder.Services.AddScoped<ITareasService,TareasService>();
+builder.Services.AddScoped<ICategoriaService,CategoriaService>();
+builder.Services.AddScoped<ITareasService,TareasService>();
 
 var app = builder.Build();
 
@@ -35,7 +35,7 @@ app.UseAuthorization();
 // app.UseWelcomePage();
 
 //implementar el middleware TimeMiddleware
-app.UseTimeMiddleware();
+// app.UseTimeMiddleware();
 
 app.MapControllers();
 

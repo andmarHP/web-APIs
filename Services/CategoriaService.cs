@@ -5,7 +5,7 @@ namespace webAPI.Services;
 
 public class CategoriaService : ICategoriaService
 {
-    protected readonly TareasContext context;
+    TareasContext context;
     public CategoriaService(TareasContext dbcontext)
     {
         context = dbcontext;

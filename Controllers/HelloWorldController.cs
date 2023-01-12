@@ -1,7 +1,6 @@
 using System.Xml;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using webAPI.Models;
 using webAPI.Services;
 
 namespace webAPI.Controllers;
@@ -48,21 +47,4 @@ public class HelloWorldController : ControllerBase
         return tot;
     }
 
-    [HttpGet("Boletos")]
-    public IActionResult GetBoletoss()
-    {
-        return Ok(helloWorldServices.GetBoletos());
-    }
-    [HttpGet("upper")]
-    public ActionResult<List<Boleto>> toUpper()
-    {
-        var miLista = helloWorldServices.GetBoletos();
-        var nuevaLista = new List<Boleto>();
-
-        foreach (var item in miLista)
-        {
-            
-        } 
-        return miLista;       
-    }
 }

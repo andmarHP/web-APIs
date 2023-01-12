@@ -5,7 +5,7 @@ namespace webAPI.Services;
 
 public class TareasService : ITareasService
 {
-    protected readonly TareasContext context;
+    TareasContext context;
     public TareasService(TareasContext dbcontext)
     {
         context = dbcontext;
