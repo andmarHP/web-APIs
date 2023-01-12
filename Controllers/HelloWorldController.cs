@@ -2,6 +2,7 @@ using System.Xml;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using webAPI.Services;
+using webapi;
 
 namespace webAPI.Controllers;
 
@@ -10,15 +11,19 @@ namespace webAPI.Controllers;
 public class HelloWorldController : ControllerBase
 {
     IHelloWorldService helloWorldServices;
+    //conexion a bd
+    TareasContext dbcontext;
     //logger 
     private readonly ILogger<HelloWorldController> _logger;
 
     public HelloWorldController(IHelloWorldService helloWorld,
-                                ILogger<HelloWorldController> logger 
+                                ILogger<HelloWorldController> logger,
+                                TareasContext db
                                 )
     {
         helloWorldServices = helloWorld;
         _logger = logger;
+        dbcontext = db;
     }
     //uso de interfaz inyectada por dependencia
     [HttpGet("getHello")]
@@ -46,5 +51,14 @@ public class HelloWorldController : ControllerBase
 
         return tot;
     }
+
+    //Metodo para crear la conexion a la base de datos, con la configuracion de la FluentAPI
+    [HttpGet]
+    [Route("create_db")]
+    public IActionResult CreateDatabase()
+    {
+        dbcontext.Database.EnsureCreated(); //Metodo para asegurar que se conecte a database
+        return Ok();
+    } 
 
 }
