@@ -5,7 +5,7 @@ namespace webAPI.Services;
 
 public class TareasService : ITareasService
 {
-    TareasContext context;
+    protected readonly TareasContext context;
     public TareasService(TareasContext dbcontext)
     {
         context = dbcontext;
@@ -20,20 +20,21 @@ public class TareasService : ITareasService
     //post 
     public async Task Save(Tarea tarea)
     {
+        tarea.FechaCreacion = DateTime.Now;
         context.Add(tarea);
         await context.SaveChangesAsync();
     }
     //put
     public async Task Update(Guid id, Tarea tarea)
     {
-        var tareaActual = await context.Tareas.FindAsync(id);
+        var tareaActual = context.Tareas.Find(id);
 
         if (tareaActual != null)
         {
-            tareaActual.CategoriaId = tarea.CategoriaId;
             tareaActual.Titulo = tarea.Titulo;
             tareaActual.Descripcion = tarea.Descripcion;
             tareaActual.PrioridadTarea = tarea.PrioridadTarea;
+            tareaActual.CategoriaId = tarea.CategoriaId;
 
             await context.SaveChangesAsync();
         }

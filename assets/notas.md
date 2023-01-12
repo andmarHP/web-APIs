@@ -41,3 +41,7 @@ Tiene la libreria que nos permite configurar Swagger dentro de nuestra solución
 Para que Swager genere la documentacion debemos configurar el openIA y seguir el estandar.
 Colocar el verbo de manera correcta para que swagger pueda mostrarnos los endpoints
 - Swager se usa solo en develop ya que se puede acceder a sus endpoint(hacker) y conocer la estructura del proyecto.
+
+# Remover paquetes
+dotnet remove package "package name"
+dotnet remove package Microsoft.EntityFrameworkCore.InMemory

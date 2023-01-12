@@ -5,7 +5,7 @@ namespace webAPI.Services;
 
 public class CategoriaService : ICategoriaService
 {
-    TareasContext context;
+    protected readonly TareasContext context;
     public CategoriaService(TareasContext dbcontext)
     {
         context = dbcontext;
@@ -25,7 +25,7 @@ public class CategoriaService : ICategoriaService
     public async Task Update(Guid id, Categoria categoria)
     {
         //buscar el id
-        var categoriaActual = await context.Categorias.FindAsync(id);
+        var categoriaActual = context.Categorias.Find(id);
 
         if (categoriaActual != null)
         {
@@ -41,7 +41,7 @@ public class CategoriaService : ICategoriaService
     public async Task Delete(Guid id)
     {
         //buscar el id
-        var categoriaActual = await context.Categorias.FindAsync(id);
+        var categoriaActual = context.Categorias.Find(id);
 
         if (categoriaActual != null)
         {

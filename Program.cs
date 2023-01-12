@@ -15,6 +15,8 @@ builder.Services.AddSwaggerGen();
 
 //inyección de dependencias de servicio de HelloWorldService - segunda forma de inyeccion de dependencia (lambda)
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldServices());
+// builder.Services.AddScoped<ICategoriaService,CategoriaService>();
+// builder.Services.AddScoped<ITareasService,TareasService>();
 
 var app = builder.Build();
 
